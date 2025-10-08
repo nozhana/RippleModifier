@@ -82,7 +82,7 @@ The Swift side manages the timing, event triggers, and Metal pipeline configurat
 
 ## 🎥 Demo
 
-https://raw.githubusercontent.com/nozhana/RippleModifier/refs/heads/main/Demo.mp4
+![demo](Demo.gif)
 
 ---
 
@@ -110,7 +110,7 @@ The ripple animation effect was inspired by **Telegram iOS**, where subtle physi
 
 **Nozhan Amiri**  
 iOS Developer & Shader Enthusiast  
-[LinkedIn Profile](https://linkedin.com/in/nozhana) • [Twitter/X](https://x.com/get__swifty) • [ShaderToy](https://shadertoy.com/nozhana) 
+[LinkedIn Profile](https://linkedin.com/in/nozhana) • [Twitter/X](https://x.com/get__swifty) • [ShaderToy](https://shadertoy.com/user/nozhana) 
 
 ---
 

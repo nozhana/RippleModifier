@@ -11,7 +11,7 @@ using namespace metal;
 
 float ring(float2 dir, float radius, float thickness, float intensity) {
     float d = length(dir)-radius;
-    d *= 1. - smoothstep(0.,thickness,abs(d)); // mask initial center ripple
+    d *= 1. - smoothstep(0.,thickness,abs(d)); // mask center ripple
     d *= smoothstep(0.,thickness,radius); // intro
     d *= 1. - smoothstep(.5,1.,radius); // outro
     return d*intensity;
@@ -36,7 +36,6 @@ float3 chromaticAberratedRing(float aberration, float2 dir, float radius, float 
                              float thickness,
                              float intensity) {
     float2 uv = position/size;
-    // uv.y = 1.-uv.y;
     
     float t = smoothstep(0., 1., time) * speed;
     float radius = t*1.1;
@@ -45,16 +44,12 @@ float3 chromaticAberratedRing(float aberration, float2 dir, float radius, float 
     float aspect = size.x/size.y;
     dir.x *= aspect;
     float3 res = chromaticAberratedRing(aberration,dir,radius,thickness,intensity);
-    // float res = ring(dir,radius,thickness,intensity);
     dir = normalize(dir);
     dir *= size/2;
     float r = layer.sample(uv*size+dir*res.r).r;
     float g = layer.sample(uv*size+dir*res.g).g;
     float b = layer.sample(uv*size+dir*res.b).b;
-    // float shading = res*2.;
     float shading = res.g*4.;
-    // float3 c = input.sample(s,uv+dir*res).rgb;
     float a = layer.sample(uv*size+dir*res.g).a;
     return half4(r,g,b,a)+shading;
-    // return float4(c,1.)+shading;
 }
